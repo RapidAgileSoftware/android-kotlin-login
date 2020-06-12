@@ -1,6 +1,11 @@
 Implementing Login on Android with FirebaseUI
 =========================
 
+This app demonstrates how to:
+
+- implement a login via firebase for email/password or gmail authentification
+- provide a user friendly login flow
+- set Authetification based content and navigation (login/logout button, settings panel for logged in users) 
 
 License
 -------
