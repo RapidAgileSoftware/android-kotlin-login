@@ -39,5 +39,17 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // get navController to navigate to other parts of the app
+        val navController = findNavController()
+        // now we observe the auth state of the view model
+        viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authentificationState->
+            when(authentificationState){
+                LoginViewModel.AuthenticationState.AUTHENTICATED -> Log.i(TAG, "Authenticated")
+                // if user is not authenticated -> redirect to login
+                LoginViewModel.AuthenticationState.UNAUTHENTICATED ->navController.navigate(R.id.loginFragment)
+                else -> Log.e(TAG, "New $authentificationState state does not require any UI change")
+            }
+
+        })
     }
 }
